@@ -1,12 +1,11 @@
 /* @flow */
-const { typeDef: Author } = require('./author');
-const { typeDef: Book } = require('./book');
+const { typeDefs: Author } = require('./author');
+const { typeDefs: Book } = require('./book');
 
 const Query = `
     type Query {
-        author: Author
-        book: Book
+        _empty: String
     }
 `;
 
-module.exports = [Author, Book, Query];
+module.exports = [Query, Author, Book];

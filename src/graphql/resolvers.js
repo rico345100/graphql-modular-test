@@ -1,22 +1,8 @@
 /* @flow */
-const resolvers = {
-    Query: {
-        author: () => ({
-            id: 0,
-            firstName: 'Rico',
-            lastName: 'Choi',
-            books: [
-                {
-                    title: 'Rico\'s Life',
-                    author: 'Rico Choi'
-                }
-            ]
-        }),
-        book: () => ({
-            title: 'Rico\'s Life',
-            author: 'Rico Choi'
-        })
-    },
-};
+const merge = require('lodash/merge');
+const { resolvers: authorResolvers } = require('./author');
+const { resolvers: bookResolvers } = require('./book');
 
-module.exports = resolvers;
+module.exports = {
+    Query: merge(authorResolvers, bookResolvers)
+};
